@@ -1,0 +1,475 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../../sandstone/lib.less";
+
+* {
+    border: 1px dotted red;
+}
+
+#outer-wrapper {
+    background: @mozIDBlue;
+}
+
+#wrapper {
+    padding: 0;
+}
+
+.content {
+    margin: 0 auto;
+    padding: (@baseLine * 2) @baseLine;
+    width: @widthDesktop - (@gridGutterWidth * 2);
+
+    @media only screen and (max-width: @breakDesktop) {
+        width: @widthTablet - (@gridGutterWidth * 2);
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        width: @widthMobileLandscape - @gridGutterWidth;
+    }
+
+    @media only screen and (max-width: @breakMobileLandscape) {
+        width: @widthMobile - @gridGutterWidth;
+    }
+}
+
+#download-fx-primary,
+#download-fx-secondary {
+    .download-link {
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+    .download-other {
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+    }
+}
+
+#try-hello {
+    text-align: center;
+
+    h1 {
+        .open-sans;
+        .font-size(72px);
+    }
+
+    p {
+        color: #fff;
+    }
+
+    .tagline {
+        .font-size(36px);
+        line-height: 1.2;
+    }
+}
+
+#firefox-hello {
+    .try-hello-button,
+    .try-hello-button:link,
+    .try-hello-button:visited {
+        .inline-block;
+        .border-radius(6px);
+        .open-sans-light;
+        text-align: center;
+        padding: 12px (@baseLine * 2);
+        margin-bottom: @baseLine;
+        background: #005189;
+        color: #fff;
+        .font-size(30px);
+        border: none;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            background: lighten(#005189, 3%);
+            color: #fff;
+        }
+    }
+
+    #fxfamilynav-header {
+        .try-hello-button {
+            .font-size(@baseFontSize);
+            padding: 12px @baseLine;
+        }
+    }
+}
+
+#use-cases {
+    position: relative;
+    padding: (@baseLine * 3) 0;
+    .clearfix();
+    background: #fff;
+    color: #41484e;
+    text-align: center;
+
+    h2 {
+        color: #41484e;
+        .font-size(36px);
+        max-width: 15em;
+        margin: 0 auto 12px;
+        line-height: 1.2;
+    }
+
+    ul {
+        position: relative;
+        list-style-type: none;
+        margin: (@baseLine * 2) 0 0;
+        padding: 0;
+        .clearfix;
+
+        li {
+            width: (@widthDesktop / 2) - (@gridGutterWidth * 3);
+            margin: 0;
+
+            h3 {
+                position: relative;
+                padding-top: 220px;
+                margin-bottom: @baseLine * 2;
+                color: #41484e;
+                .open-sans;
+                .font-size(30px);
+                font-weight: bold;
+
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 201px;
+                    content: '';
+                    background: url(/media/img/firefox/hello/2016/use-cases-sprite.png) center top no-repeat;
+                }
+            }
+
+            p {
+                .font-size(25px);
+            }
+
+            &.plan {
+                float: left;
+
+                h3:before {
+                    background-position: center 0;
+                }
+            }
+
+            &.shop {
+                float: right;
+
+                h3:before {
+                    background-position: center -215px;
+                }
+            }
+
+            @media only screen and (max-width: @breakDesktop) {
+                width: (@widthTablet / 2) - (@gridGutterWidth * 2);
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                width: auto;
+
+                &.plan,
+                &.shop {
+                    float: none;
+                }
+            }
+        }
+    }
+}
+
+#features {
+    position: relative;
+    .clearfix();
+
+    h2 {
+        .open-sans;
+        .font-size(30px);
+        font-weight: bold;
+        margin-bottom: @baseLine * 2;
+        padding-left: 35px;
+    }
+
+    ul li {
+        position: relative;
+        list-style-type: none;
+        color: #fff;
+        .font-size(25px);
+        margin: 0 0 @baseLine;
+        padding-left: 35px;
+
+        &:before {
+            position: absolute;
+            top: 11px;
+            left: 0;
+            width: 18px;
+            height: 14px;
+            content: '';
+            background: url(/media/img/firefox/hello/2016/check-mark.png) left top no-repeat;
+        }
+    }
+
+    .split-container {
+        width: 50%;
+        float: left;
+        padding: (@baseLine * 5) 0;
+
+        @media only screen and (max-width: @breakTablet) {
+            width: 100%;
+            float: none;
+        }
+
+        section {
+            width: (@widthDesktop / 2) - (@gridGutterWidth * 3);
+
+            @media only screen and (max-width: @breakDesktop) {
+                width: (@widthTablet / 2) - (@gridGutterWidth * 3);
+            }
+
+            @media only screen and (max-width: @breakTablet) {
+                width: auto;
+            }
+        }
+    }
+    .quick {
+        background: #00A6E4;
+
+        section {
+            float: right;
+            padding-right: @baseLine * 2;
+        }
+    }
+    .sharing {
+        background: #0083B6;
+
+        section {
+            float: left;
+            padding-left: @baseLine * 2;
+        }
+    }
+
+    .quick section,
+    .sharing section {
+        @media only screen and (max-width: @breakTablet) {
+            width: auto;
+            float: none;
+            padding: 0 @baseLine;
+        }
+    }
+
+    a:link,
+    a:visited {
+        color: @textColorSpaceYellow;
+    }
+}
+
+#share-hello {
+    background: #005CA8;
+
+    h2 {
+        float: left;
+        width: 600px;
+        padding-right: @baseLine * 2;
+        .font-size(36px);
+        line-height: 1.2;
+
+        @media only screen and (max-width: @breakDesktop) {
+            width: 400px;
+        }
+
+        @media only screen and (max-width: @breakTablet) {
+            width: 100%;
+            float: none;
+            text-align: center;
+            padding-right: 0;
+        }
+    }
+
+    .fx-up-to-date {
+        position: relative;
+        .clearfix;
+
+        .try-hello-button {
+            float: right;
+        }
+
+        @media only screen and (max-width: @breakTablet) {
+            text-align: center;
+
+            .try-hello-button {
+                float: none;
+                margin: @baseLine auto;
+            }
+        }
+    }
+
+    #download-fx-secondary {
+        float: right;
+
+        @media only screen and (max-width: @breakTablet) {
+            float: none;
+            margin: @baseLine auto;
+        }
+    }
+}
+
+#need-help {
+    color: #000;
+    background: #fff;
+    text-align: right;
+    .font-size(25px);
+
+    @media only screen and (max-width: @breakTablet) {
+        text-align: center;
+    }
+
+    a:link,
+    a:visited {
+        color: @linkBlue;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        color: @linkBlue;
+    }
+}
+
+/**
+ * Conditional messaging
+ * ---------------------
+ */
+
+.js {
+    .fx-up-to-date,
+    .fx-out-of-date,
+    .non-fx,
+    .mobile,
+    .download-button {
+        display: none;
+    }
+}
+
+.firefox-up-to-date {
+    .fx-up-to-date {
+        display: block;
+    }
+
+    .fx-out-of-date,
+    .non-fx,
+    .mobile,
+    .download-button {
+        display: none;
+    }
+}
+
+.firefox-out-of-date {
+    .fx-out-of-date,
+    .download-button {
+        display: block;
+    }
+
+    .fx-up-to-date,
+    .non-fx,
+    .mobile {
+        display: none;
+    }
+}
+
+.non-firefox {
+    .non-fx,
+    .download-button {
+        display: block;
+    }
+
+    .fx-up-to-date,
+    .fx-out-of-date,
+    .mobile {
+        display: none;
+    }
+}
+
+.ios,
+.android {
+    .fx-up-to-date,
+    .fx-out-of-date,
+    .non-fx,
+    .download-button {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}
+
+#footer {
+    background: #fff;
+
+    .container {
+        width: @widthDesktop - (@gridGutterWidth * 2);
+
+        @media only screen and (max-width: @breakDesktop) {
+            width: @widthTablet - @gridGutterWidth;
+        }
+
+        @media only screen and (max-width: @breakTablet) {
+            width: @widthMobileLandscape - @gridGutterWidth;
+        }
+
+        @media only screen and (max-width: @breakMobileLandscape) {
+            width: @widthMobile - @gridGutterWidth;
+        }
+    }
+
+    ul {
+        display: inline-block;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            color: @linkBlue;
+            .font-size(13px);
+
+            &:after {
+                content: '•';
+                margin: 0 10px;
+            }
+
+            &:last-child:after {
+                content: '';
+                margin: 0;
+            }
+        }
+    }
+
+    a:link,
+    a:visited {
+        color: @linkBlue;
+        .transition(color .1s ease-in-out);
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+        color: darken(@linkBlue, 5%);
+    }
+
+    .logo {
+        display: inline-block;
+        width: 93px;
+        height: 24px;
+        margin-right: @gridGutterWidth;
+        .at2x('/media/img/sandstone/footer-mozilla.png', 93px, 24px);
+        .image-replaced();
+    }
+}

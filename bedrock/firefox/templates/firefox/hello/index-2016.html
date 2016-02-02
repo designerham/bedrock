@@ -1,0 +1,134 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% from "macros.html" import fxfamilynav with context %}
+
+{% extends "firefox/base-resp.html" %}
+
+{% set_lang_files "firefox/hello-2016" %}
+
+{% block page_title_prefix %}{{ _('Firefox Hello') }} — {% endblock %}
+{% block page_title %}{{ _('Browse the Web with friends') }}{% endblock %}
+{% block page_desc %}{{ _('Use Firefox Hello to browse Web pages with your friends. Make decisions together in real time when planning a trip, shopping and more.') }}{% endblock %}
+{% block page_image %}{{ static('img/firefox/hello/hello-share.jpg') }}{% endblock %}
+{% block body_id %}firefox-hello{% endblock %}
+{% block body_class %}mozID{% endblock %}
+
+{% block page_css %}
+  {% stylesheet 'firefox_hello_2016' %}
+{% endblock %}
+
+{% block optimizely %}
+  {% if waffle.switch('firefox-hello-optimizely') %}
+    {% include 'includes/optimizely.html' %}
+  {% endif %}
+{% endblock %}
+
+{% block site_header %}{% endblock %}
+
+{% block site_header_unwrapped %}
+  {% call fxfamilynav('desktop', 'hello') %}
+    <a class="try-hello-button" href="https://support.mozilla.org">{{ _('Try Hello now') }}</a>
+    <a href="{{ url('firefox.new') }}">{{ _('Download now') }}</a>
+  {% endcall %}
+{% endblock %}
+
+{% block content %}
+  <header id="try-hello">
+    <div class="content">
+      <h1>{{ _('Plan. Shop. Decide. Together.') }}</h1>
+      <div class="fx-up-to-date">
+        <p class="tagline">{{ _('Instantly browse any Web page with a friend.') }}</p>
+        <a class="try-hello-button" href="https://support.mozilla.org">{{ _('Try Firefox Hello') }}</a>
+      </div>
+      <p class="tagline fx-out-of-date">{{ _('Get the latest version of Firefox to start browsing Web pages with your friends.') }}</p>
+      <p class="tagline non-fx">{{ _('Get Firefox to start browsing Web pages with your friends.') }}</p>
+      {{ download_firefox(force_direct=true, dom_id='download-fx-primary') }}
+      <div class="mobile">
+        <p class="tagline">{{ _('Use Firefox on your desktop or laptop to start browsing the Web with your friends.') }}</p>
+      </div>
+    </div>
+  </header>
+  <section id="use-cases">
+    <div class="content">
+      <h2>{{ _('Get on the same page and make faster decisions in real time.') }}</h2>
+      <ul>
+        <li class="plan">
+          <h3>{{ _('Plan a trip') }}</h3>
+          <p>{{ _('Figure out the details when planning a getaway with someone else.') }}</p>
+        </li>
+        <li class="shop">
+          <h3>{{ _('Shop online') }}</h3>
+          <p>{{ _('Share and compare ideas when buying a gift for a mutual friend.') }}</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <div id="features">
+    <div class="split-container quick">
+      <section>
+        <h2>{{ _('Quick, easy and ready to go') }}</h2>
+        <ul>
+          <li>{{ _('One click to send your friend an invitation') }}</li>
+          <li>{{ _('No logins, passwords or accounts required') }}</li>
+          <li>{{ _('Nothing extra to download — all you need is Firefox!') }}</li>
+        </ul>
+      </section>
+    </div>
+    <div class="split-container sharing">
+      <section>
+        <h2>{{ _('Made for sharing the Web') }}</h2>
+        <ul>
+          <li>{{ _('Collaborate and make decisions in real time') }}</li>
+          <li>{{ _('Share what you’re looking at, safely and securely') }}</li>
+          <li>{{ _('Invite friends, <a href="%s">even if they don’t use Firefox</a>')|format('https://support.mozilla.org') }}</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <section id="share-hello">
+    <div class="content">
+      <div class="fx-up-to-date">
+        <h2>{{ _('Share this page with a friend.') }}</h2>
+        <a class="try-hello-button" href="https://support.mozilla.org">{{ _('Try Hello now') }}</a>
+      </div>
+      <h2 class="fx-out-of-date">{{ _('Get the latest version of Firefox to start browsing Web pages with your friends.') }}</h2>
+      <h2 class="non-fx">{{ _('Get Firefox to start browsing Web pages with your friends.') }}</h2>
+      {{ download_firefox(force_direct=true, dom_id='download-fx-secondary') }}
+      <div class="mobile">
+        <h2>{{ _('Use Firefox on your desktop or laptop to start browsing the Web with your friends.') }}</h2>
+      </div>
+    </div>
+  </section>
+  <aside id="need-help">
+    <div class="content">
+      <p>{{ _('Need help with Hello? <a href="%s">Visit Mozilla support</a>.')|format('https://support.mozilla.org') }}</p>
+    </div>
+  </aside>
+{% endblock %}
+
+{% block site_footer %}
+<footer id="footer">
+  <div class="content">
+    <a class="logo" href="{{ url('mozorg.home') }}">Mozilla</a>
+    <ul>
+      <li>
+        <a href="{{ url('privacy') }}">{{ _('Privacy Policy') }}</a>
+      </li>
+      <li>
+        <a href="{{ url('privacy.notices.websites') }}#cookies">{{ _('Cookies') }}</a>
+      </li>
+      <li>
+        <a href="{{ url('legal.index') }}">{{ _('Legal Notices') }}</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+
+{% block js %}
+  {% javascript 'firefox_hello_2016' %}
+{% endblock %}
