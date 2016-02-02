@@ -394,6 +394,26 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_new-bundle.css',
     },
+    'firefox_new_scene1': {
+        'source_filenames': (
+            'css/sandstone/sandstone-resp.less',
+            'css/tabzilla/tabzilla-static.less',
+            'css/base/simple_footer-resp.less',
+            'css/firefox/new/common.less',
+            'css/firefox/new/scene1.less',
+        ),
+        'output_filename': 'css/firefox_new_scene1-bundle.css',
+    },
+    'firefox_new_scene2': {
+        'source_filenames': (
+            'css/sandstone/sandstone-resp.less',
+            'css/tabzilla/tabzilla-static.less',
+            'css/base/simple_footer-resp.less',
+            'css/firefox/new/common.less',
+            'css/firefox/new/scene2.less',
+        ),
+        'output_filename': 'css/firefox_new_scene2-bundle.css',
+    },
     'firefox_organizations': {
         'source_filenames': (
             'css/firefox/organizations.less',
@@ -1110,6 +1130,22 @@ PIPELINE_JS = {
             'js/firefox/new.js',
         ),
         'output_filename': 'js/firefox_new-bundle.js',
+    },
+    'firefox_new_scene1': {
+        'source_filenames': (
+            'js/base/search-params.js',
+            'js/firefox/new/common.js',
+            'js/firefox/new/scene1.js',
+        ),
+        'output_filename': 'js/firefox_new_scene1-bundle.js',
+    },
+    'firefox_new_scene2': {
+        'source_filenames': (
+            'js/base/search-params.js',
+            'js/firefox/new/common.js',
+            'js/firefox/new/scene2.js',
+        ),
+        'output_filename': 'js/firefox_new_scene2-bundle.js',
     },
     'firefox_pocket': {
         'source_filenames': (

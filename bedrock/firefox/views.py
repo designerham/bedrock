@@ -506,4 +506,19 @@ def new(request):
     if request.GET.get('product', None) or request.GET.get('os', None):
         return HttpResponsePermanentRedirect(reverse('firefox.new'))
 
-    return l10n_utils.render(request, 'firefox/new.html')
+    template = 'firefox/new.html'
+    scene = request.GET.get('scene', None)
+    version = request.GET.get('v', None)
+    dlstarted = request.GET.get('dlstarted', None)
+
+    # separate scenes version of /new
+    if version == '2':
+        if scene == '2':
+            template = 'firefox/new/scene2.html'
+        # REVIEW: Should this explicitly check for a None value instead
+        # of allowing any scene value that's not '2'?
+        else:
+            template = 'firefox/new/scene1.html'
+
+
+    return l10n_utils.render(request, template)
